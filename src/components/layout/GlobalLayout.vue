@@ -5,9 +5,8 @@
       <a-layout-header>
         <global-header></global-header>
       </a-layout-header>
-      <bread-crumb style="padding:10px"></bread-crumb>
       <a-layout-content style="padding:0 10px 10px 10px">
-
+        <slot></slot>
       </a-layout-content>
       <a-layout-footer>
          <global-footer></global-footer>
@@ -19,7 +18,7 @@
 import GlobalHeader from "@/components/layout/GlobalHeader";
 import GlobalSider from "@/components/layout/GlobalSider";
 import GlobalFooter from "@/components/layout/GlobalFooter";
-import BreadCrumb from '@/components/tools/BreadCrumb'
+
 export default {
   data() {
     return {
@@ -30,7 +29,6 @@ export default {
     GlobalHeader,
     GlobalSider,
     GlobalFooter,
-    BreadCrumb
   }
 };
 </script>

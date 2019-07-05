@@ -1,0 +1,1 @@
+export const menuIndex = state => state.menuIndex
