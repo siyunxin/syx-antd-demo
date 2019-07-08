@@ -34,12 +34,12 @@ export default {
           subkey: "sub1",
           submenu: [
             {
-              subtitle: "数据查看",
+              subtitle: "个人中心",
               subindex: "/mine/mineindex",
               key: "1"
             },
             {
-              subtitle: "数据管理",
+              subtitle: "个人设置",
               subindex: "/mine/mineset",
               key: "2"
             }
@@ -81,18 +81,21 @@ export default {
       ]
     };
   },
- 
+  
   computed:{
     ...mapGetters(['menuIndex'])
   },
-  beforeRouteUpdate (to,from,next){
-    console.log(111)
+  watch:{
+    '$route':function(newVal,oldVal) {
+      this.openKeys = [ newVal.meta.subKey ]
+      this.selectedKeys = [ newVal.meta.key ]
+    }
   },
   methods: {
     ...mapActions(['changeMenuSubKey','changeMenuKey']),
     
     clickMenuItem( path ) {
-      console.log ( path )
+     
       this.$router.push( path )
     },
     //Menu点击事件

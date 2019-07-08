@@ -3,7 +3,7 @@
         <div class="log-box">
 
         </div>
-        <div class="log-title">
+        <div :class="['log-title',showLogoText ? 'logo-text-show' : 'logo-text-hidden']">
             <h1>Syx Antd Demo</h1>
         </div>
     </div>
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-
+    props:{
+        showLogoText:{
+            type: Boolean,
+            default: true
+        }
+    }
 }
 </script>
 
@@ -36,6 +41,12 @@ export default {
             font-size: 20px;
             margin-bottom: 0;
             color: #fff;
+        }
+        .logo-text-show{
+            display: inline-block;
+        }
+        .logo-text-hidden{
+            display: none;
         }
     }
 

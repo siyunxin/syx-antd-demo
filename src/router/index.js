@@ -31,6 +31,28 @@ export default new Router({
               name: 'mineset',
               component: ()=>import('@/components/view/MineSet'),
               meta: { title:'个人设置', 'key':'2', 'subKey':'sub1' },
+              children: [
+                {
+                  path:'basic',
+                  name:'basic',
+                  component: ()=>import( '@/components/view/setting/BasicSetting')
+                },
+                {
+                  path:'safe',
+                  name:'safe',
+                  component: ()=>import( '@/components/view/setting/SafeSetting')
+                },
+                {
+                  path:'selfdom',
+                  name:'selfdom',
+                  component: ()=>import( '@/components/view/setting/SelfdomSetting')
+                },
+                {
+                  path:'importnotice',
+                  name:'importnotice',
+                  component: ()=>import( '@/components/view/setting/ImportantNotice')
+                }
+              ]
             }
           ]
           
