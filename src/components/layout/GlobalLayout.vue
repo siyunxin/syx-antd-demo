@@ -5,7 +5,7 @@
       <a-layout-header>
         <global-header @sendCollapased="receiveCollapased"></global-header>
       </a-layout-header>
-      <a-layout-content style="padding:0 10px 10px 10px">
+      <a-layout-content style="background:#fff; padding:0 10px 10px 10px">
         <slot></slot>
       </a-layout-content>
       <a-layout-footer>
