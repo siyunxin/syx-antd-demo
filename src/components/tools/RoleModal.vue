@@ -32,6 +32,7 @@ export default {
     },
     itemData: {
       type: Object,
+      default:{},
     }
   },
   data() {

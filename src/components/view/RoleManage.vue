@@ -130,9 +130,10 @@ export default {
           dataIndex: "operation",
           scopedSlots: { customRender: "operation" }
         }
-      ]
+      ],
+      editData:{}
     };
-    editData:{}
+  
   },
   components: {
     CollpaseTree,
