@@ -59,5 +59,18 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+/deep/ .ant-modal-body{
+        padding: 10px 24px !important;
+      }
+
+/deep/ .ant-form-item{
+          margin-bottom: 0px;
+      }
+</style>
+
+<style lang="less">
+  .ant-modal-body{
+        padding: 10px 24px;
+      }
 </style>

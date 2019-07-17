@@ -6,9 +6,10 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
+   /*  {
       path: '/',
       name: 'basiclayout',
+      // component: () => import('@/components/view/user/Login'),
       component: () => import('@/components/layout/BasicLayout'),
       meta: {'title': '主页'},
       redirect: '/mine',
@@ -98,6 +99,18 @@ export default new Router({
               meta: { 'title':'资讯查看', 'key':'6', 'subKey':'sub3' }
             }
           ]
+        }
+      ]
+    } */
+    {
+      path: '/',
+      component: () => import('@/components/layout/UserLayout'),
+      redirect: '/login',
+      children: [
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('@/components/view/user/Login')
         }
       ]
     }

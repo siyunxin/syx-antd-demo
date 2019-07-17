@@ -199,8 +199,11 @@ export default {
   }
 }
 .table-rolemanage-body-wrapper{
+  min-width: 800px;
   .operation-item{
-    margin: 0 10px;
+    display: inline-block;
+    width: 40px;
+    margin: 0 6px;
   }
 }
 </style>
