@@ -6,7 +6,7 @@
                     size="large"
                     type="text"
                     placeholder="账号"
-                    v-decorator="['name',{ rules:[{ require: true, message:'请输入账号'}],validateTrigger: 'blur' } ]"
+                    v-decorator="['name',{ rules:[{ required: true, message:'请输入账号'}],validateTrigger: 'blur' } ]"
                 >
                     <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)'}"/>
                 </a-input>
@@ -16,7 +16,7 @@
                     size="large"
                     type="password"
                     placeholder="密码"
-                    v-decorator="['password',{ rules:[{ require: true, message:'请输入密码'}]}]"
+                    v-decorator="['password',{ rules:[{ required: true, message:'请输入密码'}], validateTrigger:'blur'}]"
                 >
                     <a-icon slot="prefix" type="lock" :style="{ color: 'rgba(0,0,0,.25)' }"/>
                 </a-input>
@@ -28,7 +28,7 @@
                             size="large"
                             type="text"
                             placeholder="请输入验证"
-                            v-decorator="['yzm',{ rules:[{reuqire: true,message:'请输入验证码'}], validateTrigger:'blur'}]"
+                            v-decorator="['yzm',{ rules:[{ required: true,message:'请输入验证码'}], validateTrigger:'blur'}]"
                         >
                             <a-icon
                                 slot="prefix"
@@ -43,12 +43,12 @@
             <a-form-item>
                 <a-checkbox
                     @change="onChange"
-                    v-decorator="['checkbox',{ rules:[{ require: false}]}]"
+                    v-decorator="['checkbox',{ rules:[{ required: false}]}]"
                 >记住密码</a-checkbox>
-                <a href="javascript:;" style="float:right">忘记密码</a>
+                <router-link :to="{name:'forget'}" style="float:right">忘记密码</router-link>
             </a-form-item>
             <a-form-item>
-                <a-button block size="large" type="primary" htmlType="submit">立即登录</a-button>
+                <a-button block size="large" type="primary" :loading="loginBtn.loading" htmlType="submit">立即登录</a-button>
             </a-form-item>
         </a-form>
     </div>
@@ -59,7 +59,10 @@ export default {
   name: "login",
   data() {
     return {
-      form: this.$form.createForm(this)
+      form: this.$form.createForm(this),
+      loginBtn: {
+          loading:false
+        },
     };
   },
   methods: {
@@ -67,14 +70,20 @@ export default {
     handleSubmit(e) {
       e.preventDefault();
       const {
-        form: { validateFields }
+        form: { validateFields },
+        loginBtn,
       } = this;
+      loginBtn.loading = true;  
       const validateFieldsKey = ["name", "password", "yzm"];
       validateFields(validateFieldsKey, { force: true }, (err, values) => {
         if (!err) {
           console.log("loginForm", values);
+          setTimeout(() => {
+            loginBtn.loading = false  
+          }, 2000);  
         }else{
             console.log(err)
+            loginBtn.loading = false; 
         }
       });
     }
