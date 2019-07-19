@@ -9,7 +9,6 @@ export default new Router({
   routes: [{
       path: '/',
       name: 'basiclayout',
-      // component: () => import('@/components/view/user/Login'),
       component: () => import('@/components/layout/BasicLayout'),
       meta: {
         'title': '主页'
@@ -130,6 +129,7 @@ export default new Router({
 
       ]
     },
+    //账户信息
     {
       path: '/acount',
       name: 'acount',

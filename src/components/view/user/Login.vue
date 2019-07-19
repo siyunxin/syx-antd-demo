@@ -77,10 +77,12 @@ export default {
       const validateFieldsKey = ["name", "password", "yzm"];
       validateFields(validateFieldsKey, { force: true }, (err, values) => {
         if (!err) {
-          console.log("loginForm", values);
-          setTimeout(() => {
-            loginBtn.loading = false  
-          }, 2000);  
+          let value = { ...values }
+             sessionStorage.setItem('user_token','syx') 
+             setTimeout(() => {
+                this.$router.push('/mine/mineindex');
+                loginBtn.loading = false  
+              }, 2000); 
         }else{
             console.log(err)
             loginBtn.loading = false; 
