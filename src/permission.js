@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import router from './router'
 
+
+const freeName = ['login','forget']
 router.beforeEach((to, from, next) => {
   let hasUser = sessionStorage.getItem('user_token');
   if (hasUser) {
@@ -12,11 +14,10 @@ router.beforeEach((to, from, next) => {
       next()
     }
   } else {
-    if (to.path !== "/acount/login") {
-      next('/acount/login')
-    } else {
-      next()
-    }
-
+      if( freeName.includes(to.name)){
+        next()
+      }else{
+        next( { path: '/acount/login' } )
+      }
   }
 })

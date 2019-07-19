@@ -1,15 +1,18 @@
 <template>
   <div class="originzition-wrapper">
     <a-row :gutter="24">
-      <a-col :md="8">
-        <a-tree :loadData="onLoadData" :treeData="treeData" />
+      <a-col :md="4">
+        <a-tree :loadData="onLoadData" :treeData="treeData" @select="selectTree"/>
       </a-col>
-      <a-col :md="16"></a-col>
+      <a-col :md="20">
+        <my-table></my-table>
+      </a-col>
     </a-row>
   </div>
 </template>
 
 <script>
+import MyTable from '@/components/tools/MyTable'
 export default {
   data() {
     return {
@@ -18,6 +21,9 @@ export default {
         { title: "Expand to load", key: "1" },
       ]
     };
+  },
+  components: {
+    MyTable
   },
   methods: {
     onLoadData(treeNode) {
@@ -35,6 +41,9 @@ export default {
           resolve();
         }, 1000);
       });
+    },
+    selectTree(selectKey){
+      console.log(selectKey)
     }
   }
 };

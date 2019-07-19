@@ -45,7 +45,7 @@
                     @change="onChange"
                     v-decorator="['checkbox',{ rules:[{ required: false}]}]"
                 >记住密码</a-checkbox>
-                <router-link :to="{name:'forget'}" style="float:right">忘记密码</router-link>
+                <router-link :to="{path:'/acount/forget'}" style="float:right">忘记密码</router-link>
             </a-form-item>
             <a-form-item>
                 <a-button block size="large" type="primary" :loading="loginBtn.loading" htmlType="submit">立即登录</a-button>

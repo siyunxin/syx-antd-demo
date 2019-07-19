@@ -5,7 +5,7 @@
                 <a-card>
                     <div class="userinfo-card">
                         <div class="user-header-image">
-                            <img src="../../assets/images/headerImg.jpg" alt="">
+                            <img :src="userHead" alt="">
                         </div>
                         <div class="userinfo-name">
                             <span>司云昕</span>
@@ -58,7 +58,8 @@ export default {
           key: "project",
           tab: "项目(8)"
         }
-      ]
+      ],
+      userHead: require('@/assets/images/headerImg.jpg')
     };
   },
   methods: {

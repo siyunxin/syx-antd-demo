@@ -25,7 +25,7 @@ export default new Router({
           children: [{
               path: 'mineindex',
               name: 'mineindex',
-              component: () => import('@/components/view/MineIndex'),
+              component: () => import('@/components/view/main/MineIndex'),
               meta: {
                 title: '个人中心',
                 'key': '1',
@@ -35,7 +35,7 @@ export default new Router({
             {
               path: 'mineset',
               name: 'mineset',
-              component: () => import('@/components/view/MineSet'),
+              component: () => import('@/components/view/main/MineSet'),
               meta: {
                 title: '个人设置',
                 'key': '2',
@@ -77,7 +77,7 @@ export default new Router({
           children: [{
               path: 'rolemanage',
               name: 'rolemanage',
-              component: () => import('@/components/view/RoleManage'),
+              component: () => import('@/components/view/RoleMange/RoleManage'),
               meta: {
                 'title': '角色管理',
                 'key': '3',
@@ -87,7 +87,7 @@ export default new Router({
             {
               path: 'originview',
               name: 'originview',
-              component: () => import('@/components/view/OriginzitionView'),
+              component: () => import('@/components/view/RoleMange/OriginzitionView'),
               meta: {
                 'title': '组织管理',
                 'key': '4',
@@ -107,7 +107,7 @@ export default new Router({
           children: [{
               path: 'public',
               name: 'public',
-              component: () => import('@/components/view/PublicInformation'),
+              component: () => import('@/components/view/mission/PublicInformation'),
               meta: {
                 'title': '资讯发布',
                 'key': '5',
@@ -117,7 +117,7 @@ export default new Router({
             {
               path: 'check',
               name: 'check',
-              component: () => import('@/components/view/CheckInformation'),
+              component: () => import('@/components/view/mission/CheckInformation'),
               meta: {
                 'title': '资讯查看',
                 'key': '6',
