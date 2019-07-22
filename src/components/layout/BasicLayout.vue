@@ -1,6 +1,6 @@
 <template>
         <global-layout>
-            <bread-crumb style="padding:10px"></bread-crumb>
+            <bread-crumb style="padding:10px 10px 10px 0"></bread-crumb>
             <router-view></router-view>
         </global-layout>
 </template>

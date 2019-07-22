@@ -8,6 +8,8 @@
         <my-table></my-table>
       </a-col>
     </a-row>
+
+    <a-input v-model="hello"></a-input>
   </div>
 </template>
 
@@ -16,6 +18,8 @@ import MyTable from '@/components/tools/MyTable'
 export default {
   data() {
     return {
+
+      hello:'hello',
       treeData: [
         { title: "Expand to load", key: "0" },
         { title: "Expand to load", key: "1" },

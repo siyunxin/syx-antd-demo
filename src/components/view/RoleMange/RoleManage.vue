@@ -44,7 +44,7 @@
             </a-table>
         </div>
     </a-card>
-    <role-modal :visible="showModal" :itemData="editData" @hiddenModal="hiddenRoleModal"></role-modal>
+    <role-modal :visible="showModal" :itemData.sync="editData" @sendRole="receiveRole" @hiddenModal="hiddenRoleModal"></role-modal>
   </div>
 
 </template>
@@ -140,19 +140,21 @@ export default {
     RoleModal,
   },
   methods: {
-    onCellChange(key, dataIndex, value) {
+    /* onCellChange(key, dataIndex, value) {
       const dataSource = [...this.dataSource];
       const target = dataSource.find(item => item.key === key);
       if (target) {
         target[dataIndex] = value;
         this.dataSource = dataSource;
       }
-    },
+    }, */
     onDelete(key) {
+      //删除数据  删选出不等于key值
       const dataSource = [...this.dataSource];
       this.dataSource = dataSource.filter(item => item.key !== key);
     },
     handleAdd() {
+      //向table中添加数据
       const { count, dataSource } = this;
       const newData = {
         key: count,
@@ -164,13 +166,27 @@ export default {
       this.count = count + 1;
     },
     handleEditRole( key ) {
+      //向子组件发送数据
       const dataSource = [...this.dataSource]
       let obj  = dataSource.filter( item => item.key === key)
       this.editData = obj[0]
       this.showModal = true;
     },
     hiddenRoleModal( val ) {
-      this.showModal = val
+      //接收子组件关闭按钮
+       this.showModal = val;
+    },
+    receiveRole( val ){
+      //接收子组件传递的数据 修改table
+      let role = val.role
+      this.dataSource.filter( item => {
+        if( item.key === role.key ) {
+            item.name = role.roleName
+            item.namecode = role.roleCode
+            item.remark = role.roleRemark
+        }
+      })
+      this.showModal = role.hiddenModal
     }
   }
 };

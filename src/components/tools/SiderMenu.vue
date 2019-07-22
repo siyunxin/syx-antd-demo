@@ -58,6 +58,11 @@ export default {
               subtitle: "组织查看",
               subindex: "/user/originview",
               key: "4"
+            },
+            {
+              subtitle: "组织查看2",
+              subindex: "/user/originview2",
+              key: "5"
             }
           ]
         },
@@ -69,12 +74,12 @@ export default {
             {
               subtitle: "资讯发布",
               subindex: "/information/public",
-              key: "5"
+              key: "6"
             },
             {
               subtitle: "资讯列表",
               subindex: "/information/check",
-              key: "6"
+              key: "7"
             }
           ]
         }

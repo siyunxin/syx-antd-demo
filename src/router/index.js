@@ -93,6 +93,16 @@ export default new Router({
                 'key': '4',
                 'subKey': 'sub2'
               }
+            },
+            {
+              path: 'originview2',
+              name: 'originview2',
+              component: () => import('@/components/view/RoleMange/OriginzitionView2'),
+              meta: {
+                'title': '组织管理2',
+                'key': '4',
+                'subKey': 'sub2'
+              }
             }
           ]
         },
