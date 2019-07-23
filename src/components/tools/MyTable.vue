@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrapper">
-    <a-table :columns="columns" :dataSource="tableData"></a-table>
+    <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="tableData"></a-table>
   </div>
 </template>
 
@@ -83,6 +83,22 @@ export default {
         }
       ],
     };
+  },
+  computed: {
+    rowSelection() {
+      const { selectedRowKeys } = this;
+      return {
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        getCheckboxProps: record => ({
+          props: {
+            disabled: record.name === 'Disabled User', // Column configuration not to be checked
+            name: record.name,
+          }
+        }),
+      }
+    }
   },
   methods: {}
 };
