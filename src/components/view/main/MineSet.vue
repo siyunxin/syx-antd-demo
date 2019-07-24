@@ -1,7 +1,7 @@
 <template>
     <div class="user-set-wrapper">
         <a-row :gutter="24">
-            <a-col :md="24" :lg="6">
+            <a-col :md="24" :lg="4">
                 <a-menu>
                     <a-menu-item :key="1">
                         基本设置
@@ -17,7 +17,7 @@
                         </a-menu-item>
                 </a-menu>
             </a-col>
-            <a-col :md="24" :lg="18">
+            <a-col :md="24" :lg="20">
                 
             </a-col>
         </a-row>
