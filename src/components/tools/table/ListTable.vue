@@ -1,6 +1,12 @@
 <template>
   <div class="table-wrapper">
-    <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="tableData"></a-table>
+    <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="tableData">
+      <template slot="operation" slot-scope="text, record">
+        <span class="operation-item" @click="handleEditRole(record.key)">
+          <a href="javascript:;">查看</a>
+        </span>
+      </template>
+    </a-table>
   </div>
 </template>
 
@@ -59,7 +65,6 @@ export default {
           createtime: "2019-07-10",
           modifier: "admin",
           modifitime: "2019-07-19"
-
         },
         {
           key: "1",
@@ -81,7 +86,7 @@ export default {
           modifier: "admin",
           modifitime: "2019-07-19"
         }
-      ],
+      ]
     };
   },
   computed: {
@@ -89,15 +94,19 @@ export default {
       const { selectedRowKeys } = this;
       return {
         onChange: (selectedRowKeys, selectedRows) => {
-          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+          console.log(
+            `selectedRowKeys: ${selectedRowKeys}`,
+            "selectedRows: ",
+            selectedRows
+          );
         },
         getCheckboxProps: record => ({
           props: {
-            disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
+            disabled: record.name === "Disabled User", // Column configuration not to be checked
+            name: record.name
           }
-        }),
-      }
+        })
+      };
     }
   },
   methods: {}

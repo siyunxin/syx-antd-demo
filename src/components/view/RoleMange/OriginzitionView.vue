@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import MyTable from '@/components/tools/MyTable'
+import EditTable from '@/components/tools/table/EditTable'
 export default {
   data() {
     return {
@@ -23,7 +23,7 @@ export default {
     };
   },
   components: {
-    MyTable
+    EditTable
   },
   methods: {
     onLoadData(treeNode) {

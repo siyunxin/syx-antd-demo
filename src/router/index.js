@@ -100,7 +100,7 @@ export default new Router({
               component: () => import('@/components/view/RoleMange/OriginzitionView2'),
               meta: {
                 'title': '组织管理2',
-                'key': '4',
+                'key': '5',
                 'subKey': 'sub2'
               }
             }
@@ -120,7 +120,7 @@ export default new Router({
               component: () => import('@/components/view/mission/PublicInformation'),
               meta: {
                 'title': '资讯发布',
-                'key': '5',
+                'key': '6',
                 'subKey': 'sub3'
               }
             },
@@ -130,7 +130,7 @@ export default new Router({
               component: () => import('@/components/view/mission/CheckInformation'),
               meta: {
                 'title': '资讯查看',
-                'key': '6',
+                'key': '7',
                 'subKey': 'sub3'
               }
             }

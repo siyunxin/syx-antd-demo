@@ -192,7 +192,7 @@ export default {
 };
 </script>
 
-<style scoped  lang="less">
+<style lang="less">
 /deep/ .table-rolemanage-title-wrapper {
   .ant-form-inline {
     .ant-form-item {

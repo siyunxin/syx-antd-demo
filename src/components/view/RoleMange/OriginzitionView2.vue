@@ -37,13 +37,13 @@
       </a-row>
     </div>
     <div class="originzition-table">
-      <my-table></my-table>
+      <edit-table></edit-table>
     </div>
   </div>
 </template>
 
 <script>
-import MyTable from "@/components/tools/MyTable";
+import EditTable from "@/components/tools/table/EditTable";
 export default {
   name: "originzition2",
   data() {
@@ -53,7 +53,7 @@ export default {
     };
   },
   components: {
-    MyTable
+    EditTable
   },
   methods: {
     onChange(value) {
