@@ -18,15 +18,20 @@
                 </a-menu>
             </a-col>
             <a-col :md="24" :lg="18">
-                
+                <selfdom-setting>
+                </selfdom-setting>
             </a-col>
         </a-row>
     </div>
 </template>
-
+   
 <script>
+ import SelfdomSetting from '@/components/view/setting/SelfdomSetting';
 export default {
-
+    name:'mine-set',
+    components:{
+        SelfdomSetting,
+    }
 }
 </script>
 

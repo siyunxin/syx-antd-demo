@@ -21,3 +21,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
+<style lang="less">
+@import "./assets/style/theme.less";
+.themepurple{
+  .theme();
+}
+.themeblack {
+   .theme(#222a2d, #bac2c8) 
+
+}
+.themeblue{
+    .theme(#438eb9, #fff);
+}
+</style>
