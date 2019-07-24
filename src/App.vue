@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="themepurple">
     <router-view/>
   </div>
 </template>
@@ -19,5 +19,18 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+</style>
+<style lang="less">
+@import "./assets/style/theme.less";
+.themepurple{
+  .theme();
+}
+.themeblack {
+   .theme(#222a2d, #bac2c8) 
+
+}
+.themeblue{
+    .theme(#438eb9, #fff);
 }
 </style>
