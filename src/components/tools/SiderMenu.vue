@@ -61,7 +61,6 @@ export default {
             }
           ]
         },
-
         {
           menu: "资讯管理",
           subkey: "sub3",
@@ -76,6 +75,17 @@ export default {
               subindex: "/information/check",
               key: "6"
             }
+          ]
+        },
+        {
+          menu: "echarts",
+          subkey: "sub4",
+          submenu: [
+            {
+              subtitle: "echarts",
+              subindex: "/echarts/index",
+              key: "7"
+            },
           ]
         }
       ]

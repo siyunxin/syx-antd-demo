@@ -126,6 +126,27 @@ export default new Router({
             }
           ]
         },
+        ,
+    {
+      path: '/echarts',
+      name: 'echarts',
+      meta: {
+        title: 'echarts'
+      },
+      component: () => import('@/components/view/echarts/index'),
+      redirect: '/echarts/index',
+      children: [{
+        path: 'index',
+        name: 'index',
+        component: () => import('@/components/view/echarts/index'),
+        meta: {
+                'title': 'index',
+                'key': '7',
+                'subKey': 'sub4'
+              }
+      }]
+    }
+
 
       ]
     },
@@ -135,8 +156,7 @@ export default new Router({
       name: 'acount',
       component: () => import('@/components/layout/UserLayout'),
       redirect: '/acount/login',
-      children: [
-        {
+      children: [{
           path: 'login',
           name: 'login',
           component: () => import('@/components/view/user/Login')
