@@ -136,7 +136,6 @@ export default new Router({
             }
           ]
         },
-<<<<<<< HEAD
         {
           path: '/datadisplay',
           name: 'datadisplay',
@@ -167,7 +166,6 @@ export default new Router({
             }
           ]
         },
-=======
         ,
     {
       path: '/echarts',
@@ -190,7 +188,6 @@ export default new Router({
     }
 
 
->>>>>>> c658e219359687a586810bf31c75b3b6e7b0ee8d
       ]
     },
     //账户信息
