@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import Viser from 'viser-vue'
 import '@/antd/lazy_antd'
 import '@/permission'
 Vue.config.productionTip = false
 
+Vue.use( Viser )
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -136,7 +136,36 @@ export default new Router({
             }
           ]
         },
-
+        {
+          path: '/datadisplay',
+          name: 'datadisplay',
+          component: () => import('@/components/layout/RouterLayout'),
+          meta: {
+            title: '信息管理'
+          },
+          redirect: '/datadisplay/dataone',
+          children: [{
+              path: 'dataone',
+              name: 'dataone',
+              component: () => import('@/components/view/dataDisplay/DataOne'),
+              meta: {
+                'title': '数据展示一',
+                'key': '8',
+                'subKey': 'sub4'
+              }
+            },
+            {
+              path: 'datatwo',
+              name: 'datatwo',
+              component: () => import('@/components/view/dataDisplay/DataTwo'),
+              meta: {
+                'title': '数据展示二',
+                'key': '9',
+                'subKey': 'sub4'
+              }
+            }
+          ]
+        },
       ]
     },
     //账户信息

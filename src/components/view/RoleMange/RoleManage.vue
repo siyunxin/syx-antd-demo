@@ -1,57 +1,63 @@
 <template>
-    <div>
-      <a-card :bordered="false">
-        <div class="table-rolemanage-title-wrapper">
-            <a-form layout="inline">
-                <a-row :gutter="24">
-                    <a-col :md="8" :sm="24">
-                        <a-form-item label="角色名称">
-                            <a-input placeholder="请输入"></a-input>
-                        </a-form-item>
-                    </a-col>
-                    <a-col :md="8" :sm="24">
-                        <a-form-item label="角色代码">
-                            <a-input placeholder="请输入"></a-input>
-                        </a-form-item>
-                    </a-col>
-                    <a-col :md="8" :sm="24">
-                        <a-form-item>
-                            <a-button type="primary">查询</a-button>
-                            <a-button style="margin-left:10px;">新增</a-button>
-                        </a-form-item>
-                    </a-col>
-                </a-row>
-            </a-form>
-        </div>
-        <div class="table-rolemanage-body-wrapper">
-            <a-table bordered :dataSource="dataSource" :columns="columns">
-                <!-- <template slot="name" slot-scope="text, record">
+  <div>
+    <a-card :bordered="false">
+      <div class="table-top-title-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="8" :sm="24">
+              <a-form-item label="角色名称">
+                <a-input placeholder="请输入"></a-input>
+              </a-form-item>
+            </a-col>
+            <a-col :md="8" :sm="24">
+              <a-form-item label="角色代码">
+                <a-input placeholder="请输入"></a-input>
+              </a-form-item>
+            </a-col>
+            <a-col :md="8" :sm="24">
+              <a-form-item>
+                <a-button type="primary">查询</a-button>
+                <a-button style="margin-left:10px;">新增</a-button>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-rolemanage-body-wrapper">
+        <a-table bordered :dataSource="dataSource" :columns="columns">
+          <!-- <template slot="name" slot-scope="text, record">
                     <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)"/>
-                </template>-->
-                <template slot="operation" slot-scope="text, record">
-                    <a-popconfirm
-                        v-if="dataSource.length"
-                        title="Sure to delete?"
-                        @confirm="() => onDelete(record.key)">
-                        <span class="operation-item">
-                          <a href="javascript:;">删除</a>
-                        </span>
-                    </a-popconfirm>
-                      <span class="operation-item" @click="handleEditRole(record.key)">
-                        <a href="javascript:;">编辑</a>  
-                      </span>  
-                </template>
-            </a-table>
-        </div>
+          </template>-->
+          <template slot="operation" slot-scope="text, record">
+            <a-popconfirm
+              v-if="dataSource.length"
+              title="Sure to delete?"
+              @confirm="() => onDelete(record.key)"
+            >
+              <span class="operation-item">
+                <a href="javascript:;">删除</a>
+              </span>
+            </a-popconfirm>
+            <span class="operation-item" @click="handleEditRole(record.key)">
+              <a href="javascript:;">编辑</a>
+            </span>
+          </template>
+        </a-table>
+      </div>
     </a-card>
-    <role-modal :visible="showModal" :itemData.sync="editData" @sendRole="receiveRole" @hiddenModal="hiddenRoleModal"></role-modal>
+    <role-modal
+      :visible="showModal"
+      :itemData.sync="editData"
+      @sendRole="receiveRole"
+      @hiddenModal="hiddenRoleModal"
+    ></role-modal>
   </div>
-
 </template>
 
 <script>
+
 import CollpaseTree from "@/components/tools/CollpaseTree";
-import RoleModal from '@/components/tools/RoleModal';
+import RoleModal from "@/components/tools/RoleModal";
 export default {
   name: "role-manage",
   data() {
@@ -67,7 +73,6 @@ export default {
           createtime: "2019-07-10",
           modifier: "admin",
           modifitime: "2019-07-19"
-
         },
         {
           key: "1",
@@ -94,7 +99,7 @@ export default {
       columns: [
         {
           title: "序号",
-          dataIndex: "key",
+          dataIndex: "key"
         },
         {
           title: "姓名",
@@ -131,13 +136,12 @@ export default {
           scopedSlots: { customRender: "operation" }
         }
       ],
-      editData:{}
+      editData: {}
     };
-  
   },
   components: {
     CollpaseTree,
-    RoleModal,
+    RoleModal
   },
   methods: {
     /* onCellChange(key, dataIndex, value) {
@@ -165,61 +169,42 @@ export default {
       this.dataSource = [...dataSource, newData];
       this.count = count + 1;
     },
-    handleEditRole( key ) {
+    handleEditRole(key) {
       //向子组件发送数据
-      const dataSource = [...this.dataSource]
-      let obj  = dataSource.filter( item => item.key === key)
-      this.editData = obj[0]
+      const dataSource = [...this.dataSource];
+      let obj = dataSource.filter(item => item.key === key);
+      this.editData = obj[0];
       this.showModal = true;
     },
-    hiddenRoleModal( val ) {
+    hiddenRoleModal(val) {
       //接收子组件关闭按钮
-       this.showModal = val;
+      this.showModal = val;
     },
-    receiveRole( val ){
+    receiveRole(val) {
       //接收子组件传递的数据 修改table
-      let role = val.role
-      this.dataSource.filter( item => {
-        if( item.key === role.key ) {
-            item.name = role.roleName
-            item.namecode = role.roleCode
-            item.remark = role.roleRemark
+      let role = val.role;
+      this.dataSource.filter(item => {
+        if (item.key === role.key) {
+          item.name = role.roleName;
+          item.namecode = role.roleCode;
+          item.remark = role.roleRemark;
         }
-      })
-      this.showModal = role.hiddenModal
+      });
+      this.showModal = role.hiddenModal;
     }
   }
 };
 </script>
 
 <style lang="less">
-/deep/ .table-rolemanage-title-wrapper {
-  .ant-form-inline {
-    .ant-form-item {
-      margin-bottom: 24px;
-      margin-right: 0;
-      display: flex;
-    }
-    .ant-form-item-label {
-      padding-right: 8px;
-    }
-    .ant-form-item-control-wrapper {
-      flex: 1 1;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .ant-form-item-control {
-      height: 36px;
-      line-height: 36px;
-    }
-  }
-}
-.table-rolemanage-body-wrapper{
+@import url('../../global');
+.table-rolemanage-body-wrapper {
   min-width: 800px;
-  .operation-item{
+  .operation-item {
     display: inline-block;
     width: 40px;
     margin: 0 6px;
   }
 }
+
 </style>

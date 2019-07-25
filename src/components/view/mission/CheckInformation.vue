@@ -1,7 +1,7 @@
 <template>
   <div class="check-wrapper">
     <a-card :bordered="true">
-      <div class="table-rolemanage-title-wrapper">
+      <div class="table-top-title-wrapper">
         <a-form layout="inline">
           <a-row :gutter="24">
             <a-col :md="6" :sm="24">
@@ -49,16 +49,5 @@ export default {
 </script>
 
 <style lang="less">
-/deep/ .table-rolemanage-title-wrapper {
-  .ant-form-inline {
-    .ant-form-item {
-      margin-bottom: 24px;
-      margin-right: 0;
-      display: flex;
-    }
-  }
-}
-    .table-list-wrapper{
-        margin-top: 10px; 
-    }
+  @import url('../../global.less');
 </style>

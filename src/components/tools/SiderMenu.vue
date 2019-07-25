@@ -66,7 +66,6 @@ export default {
             }
           ]
         },
-
         {
           menu: "资讯管理",
           subkey: "sub3",
@@ -80,6 +79,22 @@ export default {
               subtitle: "资讯列表",
               subindex: "/information/check",
               key: "7"
+            }
+          ]
+        },
+        {
+          menu: "数据管理",
+          subkey: "sub4",
+          submenu: [
+            {
+              subtitle: "数据展示1",
+              subindex: "/datadisplay/dataone",
+              key: "8"
+            },
+            {
+              subtitle: "数据展示2",
+              subindex: "/datadisplay/datatwo",
+              key: "9"
             }
           ]
         }
