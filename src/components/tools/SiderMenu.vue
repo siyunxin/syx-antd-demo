@@ -95,7 +95,12 @@ export default {
               subtitle: "数据展示2",
               subindex: "/datadisplay/datatwo",
               key: "9"
-            }
+            },
+            {
+              subtitle: "echarts",
+              subindex: "/echarts/index",
+              key: "10"
+            },
           ]
         }
       ]

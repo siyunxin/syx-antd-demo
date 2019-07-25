@@ -1,10 +1,13 @@
 <template>
-  <div class="logo">
-    <div class="log-box"></div>
-    <div :class="['log-title',showLogoText ? 'logo-text-show' : 'logo-text-hidden']">
-      <h1>{{ Title }}</h1>
+    <div class="logo">
+        <div class="log-box">
+
+        </div>
+        <div :class="['log-title',showLogoText ? 'logo-text-show' : 'logo-text-hidden']">
+            <h1 class="logo-text">Syx Antd Demo</h1>
+        </div>
     </div>
-  </div>
+
 </template>
 
 <script>
