@@ -1,86 +1,129 @@
 <template>
-   <div class="multipleColumn">
-  <!-- <v-header :name="name" :legendArr="legendArr" :myChart="myChart"></v-header>
-  <v-filter :myChart="myChart" v-if="myChart._dom"></v-filter> -->
-    <div class="main" id="main"></div>
-    <div class="main1" id="main1">
-
+<!-- echarts显示入口 -->
+  <div class="echarts">
+    <div class="flex-container column">
+      <div
+        class="item"
+        @click="clickChart('1')"
+        style="transform: translate(-22.4%,-33.5%) scale(0.33)"
+      >
+        <histogram></histogram>
+      </div>
+      <div
+        class="item"
+        @click="clickChart('2')"
+        style="transform: translate(-22.4%,0.5%) scale(0.33)"
+      >
+        <pie></pie>
+      </div>
+      <div
+        class="item"
+        @click="clickChart('3')"
+        style="transform: translate(-22.4%,34.5%) scale(0.33)"
+      >
+        <map-histogram></map-histogram>
+      </div>
+      <div
+        class="item active"
+        @click="clickChart('4')"
+        style="transform: translate(43.7%, 0) scale(1)"
+      >
+        <point></point>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 <script>
-import echarts from 'echarts'
+import histogram from "./histogram";
+import pie from "./pie";
+import point from "./point";
+import mapHistogram from "./mapHistogram";
 export default {
   data() {
     return {
-      legendArr: [],
-      color: this.$store.state.color,
-      styleArr: [],
-      myChart: {},
-      name: '复杂柱状图'
-    }
-  },
-  methods: {
+      items: []
+    };
   },
   components: {
-
+    histogram,
+    pie,
+    point,
+    mapHistogram
   },
   mounted() {
- var myChart1 = echarts.init(document.getElementById('main1'));
- 
- var myChart = echarts.init(document.getElementById('main'));
- myChart.setOption({
-    title: {
-        text: 'ECharts 入门示例'
+    //   将所有echart图push到数组item中并设置order
+    this._init();
+  },
+  methods: {
+    _resize() {
+      this.$root.charts.forEach(myChart => {
+        myChart.resize();
+      });
     },
-    tooltip: {},
-    xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+    _init() {
+      this.items = document.querySelectorAll(".flex-container .item");
+      for (let i = 0; i < this.items.length; i++) {
+        this.items[i].dataset.order = i + 1;
+      }
     },
-    yAxis: {},
-    series: [{
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
-    }]
-});
-// 绘制图表
-myChart1.setOption({
-    series : [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            data:[
-                {value:235, name:'视频广告'},
-                {value:274, name:'联盟广告'},
-                {value:310, name:'邮件营销'},
-                {value:335, name:'直接访问'},
-                {value:400, name:'搜索引擎'}
-            ]
-        }
-    ]
-})
-}
-}
-</script>
-<<!-- 折线图 -->
-<style scoped>
-.multipleColumn{
-  height: 1000px;
-  /* background: url('../../assets/bg.jpg') no-repeat; */
-  background-size :100% 100%;
-  display: flex;
-  }
-  .main{
-    width: 40%;
-    height :calc(50% - 100px);
-    margin-top :-15px;
-    }
-     .main1{
-    width: 40%;
-    height :calc(50% - 100px);
-    margin-top :-15px;
-    }
-</style>
+    clickChart(clickIndex) {
+      let activeItem = document.querySelector(".flex-container .active");
+      let activeIndex = activeItem.dataset.order;
+      let clickItem = this.items[clickIndex - 1];
 
+      if (activeIndex === clickIndex) {
+        //   如果点击的是显示的大图的echarts
+        return;
+      }
+      activeItem.classList.remove("active");
+      clickItem.classList.add("active");
+      this._setStyle(clickItem, activeItem);
+    },
+    _setStyle(el1, el2) {
+      let transform1 = el1.style.transform;
+      let transform2 = el2.style.transform;
+      el1.style.transform = transform2;
+      el2.style.transform = transform1;
+    }
+  }
+};
+</script>
+<style scope>
+body {
+  box-sizing: border-box;
+}
+
+.item {
+  padding: 0px;
+  margin: 0px;
+  width: 68%;
+  height: 100%;
+  position: absolute;
+  transform: scale(0.33);
+  text-align: center;
+  transition: all 0.8s;
+  background: rgb(253, 250, 250);
+}
+.echarts {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 1.5%;
+}
+.flex-container.column {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto 100px auto;
+  box-sizing: content-box;
+}
+.active {
+  height: 100%;
+  width: 69%;
+  margin-left: 10px;
+
+}
+</style>
