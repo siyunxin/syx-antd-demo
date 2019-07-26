@@ -163,31 +163,19 @@ export default new Router({
                 'key': '9',
                 'subKey': 'sub4'
               }
+            },
+            {
+              path: 'echarts',
+              name: 'echarts',
+              component: () => import('@/components/view/echarts/index'),
+              meta: {
+                      'title': 'echarts',
+                      'key': '10',
+                      'subKey': 'sub4'
+                    }
             }
           ]
         },
-        ,
-    {
-      path: '/echarts',
-      name: 'echarts',
-      meta: {
-        title: 'echarts'
-      },
-      component: () => import('@/components/view/echarts/index'),
-      redirect: '/echarts/index',
-      children: [{
-        path: 'index',
-        name: 'index',
-        component: () => import('@/components/view/echarts/index'),
-        meta: {
-                'title': 'index',
-                'key': '7',
-                'subKey': 'sub4'
-              }
-      }]
-    }
-
-
       ]
     },
     //账户信息

@@ -98,7 +98,7 @@ export default {
             },
             {
               subtitle: "echarts",
-              subindex: "/echarts/index",
+              subindex: "/datadisplay/echarts",
               key: "10"
             },
           ]
