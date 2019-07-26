@@ -145,5 +145,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+  .ant-layout-sider{
+    overflow-y: hidden !important;
+  }
 </style>

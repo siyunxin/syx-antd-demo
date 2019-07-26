@@ -10,8 +10,14 @@ export default {
 }
 </script>
 
-<style>
+<style >
+
+
+</style>
+<style lang="less">
 @import './assets/style/index.less';
+@import "./assets/style/theme.less";
+@import './components/global.less';
 #app {
   width: 100%;
   min-width: 800px;
@@ -19,10 +25,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden
 }
-</style>
-<style lang="less">
-@import "./assets/style/theme.less";
 .themepurple{
   .theme();
 }

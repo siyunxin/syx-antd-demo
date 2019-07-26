@@ -20,6 +20,7 @@ import {
     Modal,
     Dropdown,
     Popconfirm,
+    Select
 
 } from 'ant-design-vue'
 
@@ -43,4 +44,5 @@ Vue.use( Dropdown )
 Vue.use( Row )
 Vue.use( Col )
 Vue.use(Popconfirm)
+Vue.use(Select)
 

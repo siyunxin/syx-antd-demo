@@ -1,6 +1,6 @@
 <template>
     <div class="chart-wrapper">
-        <v-chart :force-fit="true" :data="data" :height="height" :padding="[36, 5, 18, 5]" :scale="scale">
+        <v-chart :force-fit="true" :data="data" :height="height" :padding="[36, 5, 28, 5]" :scale="scale">
             <v-tooltip/>
             <v-bar position="year*sales"></v-bar>
         </v-chart>

@@ -172,6 +172,7 @@ export default {
     handleEditRole(key) {
       //向子组件发送数据
       const dataSource = [...this.dataSource];
+      //筛选key === index
       let obj = dataSource.filter(item => item.key === key);
       this.editData = obj[0];
       this.showModal = true;
@@ -197,7 +198,6 @@ export default {
 </script>
 
 <style lang="less">
-@import url('../../global');
 .table-rolemanage-body-wrapper {
   min-width: 800px;
   .operation-item {

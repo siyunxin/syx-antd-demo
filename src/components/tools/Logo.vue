@@ -4,7 +4,7 @@
 
         </div>
         <div :class="['log-title',showLogoText ? 'logo-text-show' : 'logo-text-hidden']">
-            <h1 class="logo-text">Syx Antd Demo</h1>
+            <h1 class="logo-text">Syx Antd</h1>
         </div>
     </div>
 

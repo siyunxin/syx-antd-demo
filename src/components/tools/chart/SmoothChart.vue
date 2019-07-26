@@ -1,6 +1,6 @@
 <template>
     <div class="chart-wrapper">
-        <v-chart :force-fit="true" :data="data" :height="height" :padding="[36, 0, 18, 0]">
+        <v-chart :force-fit="true" :data="data" :height="height" :padding="[36, 0, 28, 0]">
             <v-tooltip/>
             <v-smooth-area position="x*y"></v-smooth-area>
         </v-chart>
@@ -51,5 +51,5 @@ export default {
 </script>
 
 <style>
-
+   
 </style>
