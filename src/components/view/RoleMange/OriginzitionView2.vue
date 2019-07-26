@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import EditTable from "@/components/tools/table/EditTable";
+import EditTable from "@/components/tools/table/EditTable"; //编辑类文本 事件未添加
 export default {
   name: "originzition2",
   data() {

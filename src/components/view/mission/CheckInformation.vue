@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import ListTable from "@/components/tools/table/ListTable";
+import ListTable from "@/components/tools/table/ListTable";  // 展示列表形式 只可点击查看不可 无编辑按钮
 export default {
   name: "checkinformation",
   data() {

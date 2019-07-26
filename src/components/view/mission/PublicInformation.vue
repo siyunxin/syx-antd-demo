@@ -42,11 +42,13 @@
         <edit-table></edit-table>
       </div>
     </a-card>
+    <edit-article></edit-article>
   </div>
 </template>
 
 <script>
 import EditTable from "@/components/tools/table/EditTable";
+import EditArticle from '@/components/tools/EditArticleModal' //编辑文章modal
 export default {
   name: "publicinformation",
   data() {
@@ -57,7 +59,8 @@ export default {
     };
   },
   components: {
-    EditTable
+    EditTable,
+    EditArticle
   },
   methods: {
     changePart(value) {
