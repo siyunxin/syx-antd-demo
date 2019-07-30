@@ -6,7 +6,12 @@
 
 <script>
 export default {
-
+    name:'important-notice',
+    data(){
+        return{
+            
+        }
+    }
 }
 </script>
 
