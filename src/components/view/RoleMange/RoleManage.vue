@@ -57,7 +57,7 @@
 <script>
 
 import CollpaseTree from "@/components/tools/CollpaseTree";
-import RoleModal from "@/components/tools/RoleModal";
+import RoleModal from "@/components/tools/modal/RoleModal";
 export default {
   name: "role-manage",
   data() {

@@ -1,6 +1,6 @@
 <template>
     <div class="edit-article-wrapper">
-        <a-modal width="70%" title="文章编辑" @ok="handleOk" @cancel="handleModelCancel" v-model="visible">
+        <a-modal width="70%" title="文章编辑" @ok="handleOk" @cancel="handleModalCancel" :visible="editModalVisible">
             <a-form :form="form">
                 <a-form-item label="主标题">
                     <a-input placeholder="请输入主标题"></a-input>
@@ -37,12 +37,18 @@
 <script>
 import Ueditor from '@/components/tools/Ueditor'
 export default {
+    props:{
+        editModalVisible:{
+            type: Boolean,
+            default: false
+        }
+    },
     name: 'edit-article-modal',
     data() {
         return {
             form: this.$form.createForm(this),
-            visible: true,
             fileList: [],
+            visible: this.editModalVisible,
             previewVisible: false,
             previewImage: '',
             defaultMsg: '说点什么吧',
@@ -74,8 +80,8 @@ export default {
 
         },
         //对话框取消
-        handleModelCancel(){
-
+        handleModalCancel(){
+            this.$emit('editModalCancel',false)
         },
         getUEContent() {
             let content = this.$refs.ue.getUEContent();
