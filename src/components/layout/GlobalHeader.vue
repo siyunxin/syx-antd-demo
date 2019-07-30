@@ -18,21 +18,44 @@ import UserMenu from '@/components/tools/UserMenu'
 export default {
   data() {
     return {
+        clientWidth:0,
         collapsed:false
     };
   },
   components: {
       UserMenu
   },
+  watch: {
+      //监听宽度变化 处理collpase
+     clientWidth: function (val){
+         if(!this.timer){
+            this.clientWidth = val
+            this.timer = true
+            let that = this
+            setTimeout( function() {
+                that.collapsed = that.clientWidth < 971 ? true : false ;
+                that.$emit('sendCollapased', that.collapsed)
+                that.timer = false    
+            },400)
+         }
+     }
+
+  },
   methods: {
       toggleCollapsed() {
-         
           this.collapsed = !this.collapsed;
-           console.log(this.collapsed)
           this.$emit('sendCollapased', this.collapsed)
-      }
+      },
   },
-  mounted() {}
+  mounted() {
+        const that = this;
+        //监听页面宽度的变化 处理collpase
+        window.onresize = () => {
+            return (() => {
+                that.clientWidth = window.innerWidth
+            })()
+        }
+  }
 };
 </script>
 
