@@ -2,10 +2,11 @@
   <div class="user-info-div">
     <div class="info-text-div">{{text}}:</div>
     <div class="info-inp-text">
-      <a-textarea
+      <a-textarea 
       v-model="value"
         autosize
-        style="border:none;resize : none"
+        class="info-texterea"
+       :style="{'border':bordershow ? '' : `none`}"
       />
     </div>
   </div>
@@ -21,6 +22,10 @@ export default {
       value:{
           type: String,
           default: ''
+      },
+      bordershow:{
+        type:Boolean,
+        default:false
       }
     }
 };
@@ -42,7 +47,6 @@ export default {
   .info-texterea {
       color: #555;
        font-size: 15px;
-    border: none;
     resize: none;
     max-width:200px;
   }
