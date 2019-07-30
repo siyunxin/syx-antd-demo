@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     receiveCollapased(val) {
-      
       let emitVal = val;
       this.collapsed = emitVal
       this.collapsed ? this.left = '80px' : this.left = '200px'
