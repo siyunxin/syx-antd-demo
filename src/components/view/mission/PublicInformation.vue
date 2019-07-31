@@ -41,7 +41,7 @@
         </a-form>
       </div>
       <div>
-        <edit-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></edit-table>
+        <list-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></list-table>
       </div>
     </a-card>
     <edit-article :editModalVisible="editModalShow" @editModalCancel=" editModalShow = false"></edit-article>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import EditTable from "@/components/tools/table/EditTable";
+import ListTable from "@/components/tools/table/ListTable";
 import EditArticle from '@/components/tools/modal/EditArticleModal' //编辑文章modal
 import PreviewModal from '@/components/tools/modal/PreviewModal'
 export default {
@@ -172,7 +172,7 @@ export default {
     };
   },
   components: {
-    EditTable,
+    ListTable,
     EditArticle,
     PreviewModal
   },
@@ -192,6 +192,13 @@ export default {
     },
     handlePreview() {
       this.previewModalShow = true
+    },
+    //接收pageInfo信息修改页信息
+    receivePageInfo( pageinfo ){
+      let pageObj = { ...pageinfo }
+      this.pagination = pageObj
+
+      //axios请求数据操作
     }
   }
 };

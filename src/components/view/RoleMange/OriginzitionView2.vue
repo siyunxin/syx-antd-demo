@@ -37,7 +37,7 @@
       </a-row>
     </div>
     <div class="originzition-table">
-      <list-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></list-table>
+      <list-table :columns="columns" :dataSource="dataSource" :pagination="pagination" @sendPageInfo="receivePageInfo"></list-table>
     </div>
   </div>
 </template>
@@ -147,6 +147,11 @@ export default {
     onChange(value) {
       console.log(value);
       this.value = value;
+    },
+    receivePageInfo( pageinfo ) {
+      console.log(pageinfo)
+      let pageObj = { ...pageinfo }
+      this.pagination = pageObj
     }
   }
 };

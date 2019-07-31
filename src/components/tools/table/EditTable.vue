@@ -1,6 +1,12 @@
 <template>
   <div class="table-wrapper">
-    <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="dataSource" :pagination="pagination">
+    <a-table
+      :rowSelection="rowSelection"
+      :columns="columns"
+      :dataSource="dataSource"
+      :pagination="pagination"
+      @change="handleTableChange"
+    >
       <template slot="operation" slot-scope="text, record">
         <a-popconfirm
           v-if="columns.length"
@@ -22,25 +28,22 @@
 <script>
 export default {
   name: "edit-table",
-  props:{
-    columns:{
+  props: {
+    columns: {
       type: Array,
-      default: ()=>[]
+      default: () => []
     },
-    dataSource:{
+    dataSource: {
       type: Array,
-      default: ()=>[]
+      default: () => []
     },
-    pagination:{
+    pagination: {
       type: Object,
       default: {}
     }
   },
   data() {
-    return {
-      
-      
-    };
+    return {};
   },
   computed: {
     rowSelection() {
@@ -59,17 +62,21 @@ export default {
             name: record.name
           }
         }),
-        onSelectAll: (selected, selectedRows, changeRows)=>{
-          console.log('selected', selected)
-          console.log('selectedRows', selectedRows)
-          console.log('changeRows', changeRows)
+        onSelectAll: (selected, selectedRows, changeRows) => {
+          console.log("selected", selected);
+          console.log("selectedRows", selectedRows);
+          console.log("changeRows", changeRows);
         }
       };
     }
   },
   methods: {
-    handleEditRole(key){
-      console.log( key )
+    handleEditRole(key) {
+      console.log(key);
+    },
+    handleTableChange(pagination){
+      let pageInfo = { ...pagination };
+      this.$emit('sendPageInfo', pageInfo)
     }
   }
 };

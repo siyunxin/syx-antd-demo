@@ -1,12 +1,17 @@
 <template>
   <div class="originzition-wrapper">
-    <a-card :bordered="false">
+    <a-card :bordered="true">
       <a-row :gutter="24">
         <a-col :md="4">
-          <a-tree :loadData="onLoadData" :treeData="treeData" @select="selectTree"/>
+          <a-tree :loadData="onLoadData" :treeData="treeData" @select="selectTree" />
         </a-col>
         <a-col :md="20">
-          <edit-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></edit-table>
+          <edit-table
+            :columns="columns"
+            :dataSource="dataSource"
+            :pagination="pagination"
+            @sendPageInfo="receivePageInfo"
+          ></edit-table>
         </a-col>
       </a-row>
     </a-card>
@@ -14,16 +19,16 @@
 </template>
 
 <script>
-import EditTable from '@/components/tools/table/EditTable'
+import EditTable from "@/components/tools/table/EditTable";
 export default {
   data() {
     return {
       treeData: [
         { title: "Expand to load", key: "0" },
-        { title: "Expand to load", key: "1" },
+        { title: "Expand to load", key: "1" }
       ],
-      pagination:{
-        current: 2,
+      pagination: {
+        current: 1,
         total: 10,
         pageSize: 5,
         showTotal: total => `共 ${total} 条数据`
@@ -122,8 +127,13 @@ export default {
         }, 1000);
       });
     },
-    selectTree(selectKey){
-      console.log(selectKey)
+    selectTree( selectKey ) {
+      console.log(selectKey);
+    },
+    receivePageInfo( pageinfo ) {
+      console.log(pageinfo)
+      let pageObj = { ...pageinfo }
+      this.pagination = pageObj
     }
   }
 };

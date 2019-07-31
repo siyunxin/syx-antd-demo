@@ -24,7 +24,13 @@
         </a-form>
       </div>
       <div class="table-rolemanage-body-wrapper">
-        <a-table bordered :dataSource="dataSource" :columns="columns" :pagination="pagination">
+        <a-table
+          bordered
+          :dataSource="dataSource"
+          :columns="columns"
+          :pagination="pagination"
+          @change="handleTableChange"
+        >
           <!-- <template slot="name" slot-scope="text, record">
                     <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)"/>
           </template>-->
@@ -55,7 +61,6 @@
 </template>
 
 <script>
-
 import CollpaseTree from "@/components/tools/CollpaseTree";
 import RoleModal from "@/components/tools/modal/RoleModal";
 export default {
@@ -63,7 +68,7 @@ export default {
   data() {
     return {
       showModal: false,
-      pagination:{
+      pagination: {
         current: 2,
         total: 15,
         pageSize: 5,
@@ -198,6 +203,11 @@ export default {
         }
       });
       this.showModal = role.hiddenModal;
+    },
+    handleTableChange( pagination ){
+      let pageInfo = { ...pageInfo };
+      this.pagination = pageInfo
+      //axios请求
     }
   }
 };
@@ -212,5 +222,4 @@ export default {
     margin: 0 6px;
   }
 }
-
 </style>

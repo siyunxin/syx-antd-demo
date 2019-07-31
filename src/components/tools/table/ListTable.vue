@@ -1,6 +1,12 @@
 <template>
   <div class="table-wrapper">
-    <a-table :rowSelection="rowSelection" :columns="columns" :dataSource="dataSource" :pagination="pagination">
+    <a-table
+      :rowSelection="rowSelection"
+      :columns="columns"
+      :dataSource="dataSource"
+      :pagination="pagination"
+      @change="handleTableChange"
+    >
       <template slot="operation" slot-scope="text, record">
         <span class="operation-item" @click="handleEditRole(record.key)">
           <a href="javascript:;">查看</a>
@@ -13,23 +19,23 @@
 <script>
 export default {
   name: "list-table",
-  props:{
-    columns:{
+  props: {
+    columns: {
       type: Array,
-      default: ()=>[]
+      default: () => []
     },
-    dataSource:{
+    dataSource: {
       type: Array,
-      default: ()=>[]
+      default: () => []
     },
-    pagination:{
+    pagination: {
       type: Object,
       default: {}
     }
+    
   },
   data() {
     return {
-      
       
     };
   },
@@ -50,17 +56,22 @@ export default {
             name: record.name
           }
         }),
-        onSelectAll: (selected, selectedRows, changeRows)=>{
-          console.log('selected', selected)
-          console.log('selectedRows', selectedRows)
-          console.log('changeRows', changeRows)
+        onSelectAll: (selected, selectedRows, changeRows) => {
+          console.log("selected", selected);
+          console.log("selectedRows", selectedRows);
+          console.log("changeRows", changeRows);
         }
       };
     }
   },
   methods: {
-    handleEditRole(key){
-
+    handleEditRole(key) {},
+    handleTableChange( pagination, fliters, sorter){
+      console.log('分页配置', pagination)
+      console.log('分页fliters', pagination)
+      console.log('分页sorter', pagination)
+      const pageInfo = { ...pagination };
+      this.$emit('sendPageInfo', pageInfo)
     }
   }
 };
