@@ -37,23 +37,111 @@
       </a-row>
     </div>
     <div class="originzition-table">
-      <edit-table></edit-table>
+      <list-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></list-table>
     </div>
   </div>
 </template>
 
 <script>
-import EditTable from "@/components/tools/table/EditTable"; //编辑类文本 事件未添加
+import ListTable from "@/components/tools/table/ListTable"; //编辑类文本 事件未添加
 export default {
   name: "originzition2",
   data() {
     return {
       treeExpandedKeys: [],
-      value: undefined
+      value: undefined,
+      pagination:{
+        current: 2,
+        total: 15,
+        pageSize: 5,
+        showTotal: total => `共 ${total} 条数据`
+      },
+      columns: [
+        {
+          title: "序号",
+          dataIndex: "key"
+        },
+        {
+          title: "姓名",
+          dataIndex: "name",
+          scopedSlots: { customRender: "name" }
+        },
+        {
+          title: "角色代码",
+          dataIndex: "namecode"
+        },
+        {
+          title: "备注",
+          dataIndex: "remark"
+        },
+        {
+          title: "创建人",
+          dataIndex: "creater"
+        },
+        {
+          title: "创建时间",
+          dataIndex: "createtime"
+        },
+        {
+          title: "修改人",
+          dataIndex: "modifier"
+        },
+        {
+          title: "修改时间",
+          dataIndex: "modifitime"
+        },
+        {
+          title: "操作",
+          dataIndex: "operation",
+          scopedSlots: { customRender: "operation" }
+        }
+      ],
+      dataSource: [
+        {
+          key: "0",
+          name: "Edward King 0",
+          namecode: "32",
+          remark: "London, Park Lane no. 0",
+          creater: "admin",
+          createtime: "2019-07-10",
+          modifier: "admin",
+          modifitime: "2019-07-19"
+        },
+        {
+          key: "1",
+          name: "Edward King 0",
+          namecode: "32",
+          remark: "London, Park Lane no. 0",
+          creater: "admin",
+          createtime: "2019-07-10",
+          modifier: "admin",
+          modifitime: "2019-07-19"
+        },
+        {
+          key: "2",
+          name: "Edward King 0",
+          namecode: "32",
+          remark: "London, Park Lane no. 0",
+          creater: "admin",
+          createtime: "2019-07-10",
+          modifier: "admin",
+          modifitime: "2019-07-19"
+        },
+        {
+          key: "3",
+          name: "Edward King 0",
+          namecode: "32",
+          remark: "London, Park Lane no. 0",
+          creater: "admin",
+          createtime: "2019-07-10",
+          modifier: "admin",
+          modifitime: "2019-07-19"
+        }
+      ]
     };
   },
   components: {
-    EditTable
+    ListTable
   },
   methods: {
     onChange(value) {

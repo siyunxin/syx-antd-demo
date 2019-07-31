@@ -24,7 +24,7 @@
         </a-form>
       </div>
       <div class="table-rolemanage-body-wrapper">
-        <a-table bordered :dataSource="dataSource" :columns="columns">
+        <a-table bordered :dataSource="dataSource" :columns="columns" :pagination="pagination">
           <!-- <template slot="name" slot-scope="text, record">
                     <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)"/>
           </template>-->
@@ -63,6 +63,12 @@ export default {
   data() {
     return {
       showModal: false,
+      pagination:{
+        current: 2,
+        total: 15,
+        pageSize: 5,
+        showTotal: total => `共 ${total} 条数据`
+      },
       dataSource: [
         {
           key: "0",

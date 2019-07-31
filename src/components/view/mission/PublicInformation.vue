@@ -41,7 +41,7 @@
         </a-form>
       </div>
       <div>
-        <edit-table></edit-table>
+        <edit-table :columns="columns" :dataSource="dataSource" :pagination="pagination"></edit-table>
       </div>
     </a-card>
     <edit-article :editModalVisible="editModalShow" @editModalCancel=" editModalShow = false"></edit-article>
@@ -62,6 +62,112 @@ export default {
       statusValue: '已发布',
       editModalShow: false,
       previewModalShow: false,
+      pagination:{
+        current: 2,
+        total: 10,
+        pageSize: 5,
+        showTotal: total => `共 ${total} 条数据`
+      },
+      columns: [
+        {
+          title: "序号",
+          dataIndex: "key"
+
+        },
+        {
+          title: "缩略图",
+          dataIndex: "smallpic",
+          customRender: (text,record,index)=>  <div style="width:60px;"><img src={text} style="width:100%;height:100%;" alt="缩略图"/></div> 
+        },
+        {
+          title: "置顶头图",
+          dataIndex: "tophead",
+          customRender: (text,record,index)=>  <div style="width:80px;height:60px;"><img src={text} style="width:100%;height:100%;" alt="缩略图"/></div> 
+
+        },
+        {
+          title: "栏目",
+          dataIndex: "part"
+        },
+        {
+          title: "类型",
+          dataIndex: "newstype"
+        },
+        {
+          title: "置顶标识",
+          dataIndex: "toplogo"
+        },
+        {
+          title: "状态",
+          dataIndex: "status"
+        },
+      ],
+      dataSource:[
+        {
+          key: "0",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "1",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "2",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "3",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "4",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "5",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        {
+          key: "6",
+          smallpic: require('@/assets/logo.png'),
+          tophead: require('@/assets/images/headerImg.jpg'),
+          part: "London, Park Lane no. 0",
+          newstype: "admin",
+          toplogo: "2019-07-10",
+          status: "admin",
+        },
+        
+      ]
 
     };
   },
